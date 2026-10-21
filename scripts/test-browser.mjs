@@ -16,7 +16,7 @@ if (!baseURL) {
       let file = path.resolve(root, '.' + pathname.slice(prefix.length));
       if (file !== root && !file.startsWith(root + path.sep)) { response.writeHead(403).end(); return; }
       if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
-      const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.txt': 'text/plain', '.json': 'application/json' };
+      const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.txt': 'text/plain', '.json': 'application/json', '.jpg': 'image/jpeg' };
       response.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' });
       response.end(await readFile(file));
     } catch { response.writeHead(404).end(); }
@@ -33,6 +33,9 @@ try {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(baseURL);
+  await page.getByRole('img', { name: 'Louro José, o papagaio, de smoking', exact: true }).waitFor();
+  await page.waitForFunction(() => { const image = document.querySelector('.login-mascot img'); return image && image.complete && image.naturalWidth > 0; });
+  console.log('PASS: Louro José photo loads on login');
   await page.getByLabel('Usuário', { exact: true }).fill('Hermes');
   await page.getByLabel('Senha', { exact: true }).fill('wrong');
   await page.getByRole('button', { name: 'Entrar', exact: true }).click();
