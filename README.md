@@ -7,6 +7,18 @@ a publicação na Vercel permanece adiada.
 
 Site: https://infowest-systems.github.io/hermes-test-app/
 
+## Login demonstrativo
+
+A entrada do site mostra o formulário de login. Use **Hermes** e **123**.
+Após entrar, a rota `/home/` exibe a página principal com o botão **Sair**.
+A sessão permanece durante a navegação e o recarregamento na mesma aba;
+ao sair, o acesso direto à home retorna ao login.
+
+**Não é autenticação de produção.** As credenciais são públicas e verificadas
+no cliente; a sessão usa `sessionStorage`, não há backend e qualquer pessoa
+pode contornar essas verificações. Não hospede dados privados neste projeto.
+A senha digitada não é armazenada. A publicação na Vercel continua adiada.
+
 ## Desenvolvimento
 
 ```sh
@@ -22,6 +34,21 @@ npm run build
 ```
 
 O build estático é gerado em `out/`.
+
+## Teste de navegador
+
+```sh
+npx playwright install chromium
+NEXT_PUBLIC_BASE_PATH=/hermes-test-app npm run build
+npm run test:browser
+```
+
+O teste inicia um servidor local temporário e verifica credenciais incorretas,
+login, recarregamento, logoff, bloqueio demonstrativo da home e tela mobile.
+O sistema precisa das bibliotecas de execução do Chromium. Para usar um
+navegador já instalado, defina `CHROMIUM_PATH`. Para testar a publicação,
+defina `TEST_BASE_URL=https://infowest-systems.github.io/hermes-test-app/`.
+As capturas são opcionais via `SCREENSHOT_DIR`.
 
 ## GitHub Pages
 

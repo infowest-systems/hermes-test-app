@@ -39,3 +39,30 @@ h1 > span { display: block; }
   .masthead-note { max-width: 100px; text-align: right; font-size: 9px; line-height: 1.6; }
   .footer { align-items: flex-start; flex-wrap: wrap; gap: 10px 20px; }
 }
+button, input { font: inherit; }
+.login-layout { flex: 1; width: 100%; max-width: 1160px; margin: auto; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(36px, 7vw, 100px); align-items: center; padding: 64px 0; }
+.login-heading { font-size: clamp(58px, 6.5vw, 94px); }
+.login-caption { color: var(--muted); font-size: 15px; line-height: 1.7; margin: 25px 0 0; }
+.login-panel { padding: clamp(24px, 3vw, 40px); border: 1px solid var(--border); background: #003c28; }
+.login-panel h2 { font-size: 28px; margin: 0 0 12px; letter-spacing: -.035em; }
+.login-subtitle { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 0 0 28px; }
+.login-panel form { display: flex; flex-direction: column; }
+.login-panel label { font-size: 13px; font-weight: 700; margin: 0 0 9px; }
+.login-panel input { width: 100%; min-height: 48px; border: 1px solid #739680; border-radius: 0; padding: 12px 14px; margin: 0 0 23px; background: #fffdf0; color: #06452e; font-size: 16px; }
+.primary-button { min-height: 48px; padding: 12px 20px; border: 0; color: var(--green); background: var(--yellow); font-weight: 800; cursor: pointer; }
+.primary-button:hover { background: #ffe975; }
+.demo-notice { color: var(--muted); font-size: 11px; line-height: 1.7; margin: 22px 0 0; }
+.form-error { color: #ffe7a3; background: #5b3219; padding: 12px 14px; line-height: 1.6; font-size: 13px; margin: 0 0 18px; }
+.session-actions { display: flex; align-items: center; gap: 18px; }
+.session-user { color: var(--muted); font-size: 13px; }
+.logout-button { min-height: 44px; padding: 9px 20px; border: 1px solid var(--yellow); background: transparent; color: var(--yellow); font-weight: 700; cursor: pointer; }
+.logout-button:hover { background: var(--yellow); color: var(--green); }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+.session-loading { min-height: 100svh; display: grid; place-items: center; padding: 24px; color: var(--white); }
+@media (max-width: 760px) {
+  .login-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; padding: 44px 0; }
+  .login-intro { max-width: 440px; }
+  .login-heading { font-size: clamp(52px, 12vw, 80px); }
+  .login-panel { width: 100%; max-width: 500px; }
+}
+@media (max-width: 380px) { .session-user { display: none; } .session-actions { gap: 8px; } }

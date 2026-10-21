@@ -1,31 +1,38 @@
-import { createElement as h } from 'react';
+"use client";
 
-export default function Home() {
-  return h('main', { className: 'canvas' },
-    h('header', { className: 'masthead' },
-      h('span', { className: 'brand' }, h('span', { className: 'brand-mark', 'aria-hidden': 'true' }), 'BRASIL'),
-      h('span', { className: 'masthead-note' }, 'VERDE & AMARELO')
-    ),
-    h('section', { className: 'hero', 'aria-labelledby': 'page-title' },
-      h('div', { className: 'message' },
-        h('p', { className: 'eyebrow' }, 'DE VERDE E AMARELO'),
-        h('h1', { id: 'page-title', 'aria-label': 'Deus, Pátria e Família' },
-          h('span', null, 'Deus,'),
-          h('span', null, 'Pátria e'),
-          h('span', { className: 'highlight' }, 'Família')
-        ),
-        h('p', { className: 'campaign' }, 'Bolsonaro 2026')
-      ),
-      h('div', { className: 'flag-composition', 'aria-hidden': 'true' },
-        h('div', { className: 'brazil-flag', 'aria-hidden': 'true' },
-          h('div', { className: 'flag-diamond' }, h('div', { className: 'flag-globe' }, h('span', { className: 'flag-band' })))
-        ),
-        h('span', { className: 'flag-caption' }, 'BRASIL · 2026')
-      )
-    ),
-    h('footer', { className: 'footer' },
-      h('span', null, 'Deus, Pátria e Família'),
-      h('span', { className: 'footer-note' }, 'Página pessoal · sem vínculo oficial')
-    )
-  );
+import { createElement as h, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import LoginView from '../components/LoginView.js';
+import { isAuthenticated, signIn } from '../lib/demo-auth.js';
+
+export default function LoginPage() {
+  const router = useRouter();
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    try {
+      if (isAuthenticated(window.sessionStorage)) router.replace('/home/');
+    } catch {
+      setError('Habilite o armazenamento de sessão do navegador para entrar.');
+    }
+  }, [router]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setError('');
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    try {
+      if (!signIn(window.sessionStorage, data.get('username'), data.get('password'))) {
+        setError('Usuário ou senha incorretos.');
+        return;
+      }
+      form.reset();
+      router.replace('/home/');
+    } catch {
+      setError('Não foi possível iniciar a sessão. Habilite o armazenamento do navegador.');
+    }
+  }
+
+  return h(LoginView, { onSubmit: handleSubmit, error });
 }
