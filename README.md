@@ -1,6 +1,10 @@
-# Hermes Test APP
+# Artes Angel — Hermes Test APP
 
-Página Hello World com Next.js e React, preparada para GitHub Pages e Vercel.
+Página estática com Next.js e React: fundo cor-de-rosa, tipografia delicada e
+uma auréola dourada acima do A de Angel. Publicação atual no GitHub Pages;
+a publicação na Vercel permanece adiada.
+
+Site: https://infowest-systems.github.io/hermes-test-app/
 
 ## Desenvolvimento
 

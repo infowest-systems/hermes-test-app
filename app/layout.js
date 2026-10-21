@@ -2,8 +2,8 @@ import { createElement as h } from 'react';
 import './globals.css';
 
 export const metadata = {
-  title: 'Hermes Test APP | Hello World',
-  description: 'Todo projeto começa com um olá. Uma aplicação simples feita com Next.js e React.'
+  title: 'Artes Angel',
+  description: 'Artes Angel. A beleza mora nos detalhes.'
 };
 
 export default function RootLayout({ children }) {
