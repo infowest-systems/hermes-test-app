@@ -1,68 +1,41 @@
 * { box-sizing: border-box; }
 :root {
-  color-scheme: light;
-  --pink: #f6d9e2;
-  --ink: #793b51;
-  --muted: #885266;
-  --gold: #a47731;
-  --border: #d9adbd;
+  color-scheme: dark;
+  --green: #06452e;
+  --yellow: #ffdf45;
+  --white: #fffdf0;
+  --muted: #c3d8c7;
+  --border: #ffffff30;
 }
-body { margin: 0; background: var(--pink); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
-.canvas {
-  min-height: 100svh;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 30px clamp(24px, 5.5vw, 84px) 25px;
-  background: radial-gradient(ellipse at 50% 43%, #fff0f4 0%, #f6d9e2 65%);
-}
-.canvas::before, .canvas::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: clamp(280px, 45vw, 650px);
-  aspect-ratio: 1;
-  border: 1px solid #e9bacb;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.canvas::before { top: -30%; right: -18%; outline: 1px solid #e9bacb; outline-offset: 24px; }
-.canvas::after { bottom: -40%; left: -15%; outline: 1px solid #e9bacb; outline-offset: 24px; }
+body { margin: 0; background: var(--green); color: var(--white); font-family: 'Arial', 'Helvetica Neue', sans-serif; }
+.canvas { min-height: 100svh; display: flex; flex-direction: column; padding: 30px clamp(24px, 6vw, 88px) 24px; border-top: 7px solid var(--yellow); }
 .masthead, .footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.masthead { padding-bottom: 23px; border-bottom: 1px solid var(--border); }
-.signature { font-family: Georgia, 'Times New Roman', serif; font-size: 23px; font-style: italic; letter-spacing: -.04em; }
-.masthead-note { color: var(--muted); font-size: 11px; letter-spacing: .075em; }
-.hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 65px 0 70px; text-align: center; }
-.ornament { display: flex; align-items: center; gap: 14px; color: var(--gold); }
-.ornament span { width: 34px; height: 1px; background: currentColor; opacity: .6; }
-.ornament i { width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg); }
-.eyebrow { margin: 23px 0 29px; color: var(--muted); font-size: 10px; letter-spacing: .28em; }
-h1 { display: flex; flex-direction: column; align-items: center; margin: 0; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
-.artes { display: block; margin-right: .12em; font-size: clamp(55px, 8vw, 98px); font-style: italic; letter-spacing: -.07em; line-height: 1.1; }
-.angel { display: block; margin-top: .22em; font-size: clamp(94px, 15vw, 180px); letter-spacing: -.065em; line-height: 1.08; white-space: nowrap; }
-.angel-initial { display: inline-block; position: relative; }
-.halo {
-  position: absolute;
-  width: .58em;
-  height: .15em;
-  top: -.035em;
-  left: .16em;
-  border: clamp(2px, .2vw, 3px) solid var(--gold);
-  border-radius: 50%;
-  transform: rotate(-14deg);
-  box-shadow: 0 0 0 2px #fff0f480, 0 0 16px #c5983e26;
-}
-.tagline { margin: 29px 0 0; font-family: Georgia, 'Times New Roman', serif; font-style: italic; color: var(--muted); font-size: clamp(17px, 2vw, 21px); line-height: 1.6; }
-.finishing-line { width: 40px; height: 1px; margin-top: 30px; background: var(--gold); }
-.footer { padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; letter-spacing: .05em; }
-.footer-note { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 14px; letter-spacing: 0; }
-@media (max-width: 480px) {
-  .canvas { padding-top: 23px; padding-bottom: 23px; }
-  .masthead-note { max-width: 95px; text-align: right; line-height: 1.6; font-size: 10px; }
-  .hero { padding: 60px 0; }
-  .footer { align-items: flex-start; gap: 16px; }
-  .footer > span { max-width: 160px; line-height: 1.6; }
-  .footer-note { text-align: right; }
+.masthead { padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.brand { display: inline-flex; align-items: center; gap: 13px; font-size: 18px; font-weight: 800; letter-spacing: .15em; }
+.brand-mark { width: 12px; height: 12px; background: var(--yellow); transform: rotate(45deg); }
+.masthead-note { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .16em; }
+.hero { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 100px); align-items: center; padding: clamp(48px, 7vw, 92px) 0; }
+.eyebrow { margin: 0 0 25px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .2em; }
+h1 { margin: 0; font-size: clamp(62px, 8.2vw, 122px); line-height: 1.02; font-weight: 900; letter-spacing: -.065em; }
+h1 > span { display: block; }
+.highlight { color: var(--yellow); }
+.campaign { display: inline-block; margin: 38px 0 0; padding: 15px 22px; color: var(--green); background: var(--yellow); font-size: clamp(18px, 2.3vw, 26px); font-weight: 800; letter-spacing: .015em; }
+.flag-composition { display: flex; flex-direction: column; align-items: center; gap: 27px; }
+.brazil-flag { width: 100%; max-width: 410px; aspect-ratio: 10 / 7; display: grid; place-items: center; background: #008747; border: 1px solid #ffffff35; box-shadow: 18px 18px 0 #003c28; }
+.flag-diamond { width: 82%; height: 82%; display: grid; place-items: center; background: var(--yellow); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.flag-globe { width: 44%; aspect-ratio: 1; position: relative; overflow: hidden; border-radius: 50%; background: #17428b; }
+.flag-band { position: absolute; width: 135%; height: 50%; left: -18%; top: 38%; border-top: 12px solid var(--white); border-radius: 50%; transform: rotate(15deg); }
+.flag-caption { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .24em; }
+.footer { border-top: 1px solid var(--border); padding-top: 20px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.footer-note { font-size: 10px; text-align: right; }
+@media (max-width: 700px) {
+  .canvas { padding: 24px 24px 20px; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 46px; padding: 48px 0; }
+  h1 { font-size: clamp(58px, 13vw, 90px); }
+  .flag-composition { align-items: flex-start; }
+  .brazil-flag { width: min(100%, 300px); box-shadow: 10px 10px 0 #003c28; }
+  .flag-caption { margin-top: 5px; }
+  .campaign { margin-top: 28px; }
+  .masthead-note { max-width: 100px; text-align: right; font-size: 9px; line-height: 1.6; }
+  .footer { align-items: flex-start; flex-wrap: wrap; gap: 10px 20px; }
 }

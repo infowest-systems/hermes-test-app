@@ -1,7 +1,8 @@
-# Artes Angel — Hermes Test APP
+# Brasil — Hermes Test APP
 
-Página estática com Next.js e React: fundo cor-de-rosa, tipografia delicada e
-uma auréola dourada acima do A de Angel. Publicação atual no GitHub Pages;
+Página estática com Next.js e React, tema Brasil em verde e amarelo,
+com os textos “Deus, Pátria e Família” e “Bolsonaro 2026”. Página pessoal,
+sem vínculo oficial. Publicação atual no GitHub Pages;
 a publicação na Vercel permanece adiada.
 
 Site: https://infowest-systems.github.io/hermes-test-app/
