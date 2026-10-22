@@ -15,9 +15,19 @@ test('login has labeled username/password fields, submit button and demo notice'
   assert.match(html, /demonstrativo/);
 });
 
-test('login displays Artis Angel with halo over the initial A of Angel, without old theme', () => {
-  const html = renderToStaticMarkup(createElement(LoginView));
-  assert.match(html, /<h1[^>]*aria-label="Artis Angel"/);
-  assert.match(html, /class="angel-initial"><span class="halo" aria-hidden="true"><\/span>A<\/span>ngel/);
-  assert.doesNotMatch(html, /Bolsonaro|Pátria|BRASIL|Louro|louro-jose|brazil-flag/);
+test('Exclusive Media login features photography with correct root and Pages image paths', () => {
+  const old = process.env.NEXT_PUBLIC_BASE_PATH;
+  try {
+    for (const base of ['', '/hermes-test-app']) {
+      process.env.NEXT_PUBLIC_BASE_PATH = base;
+      const html = renderToStaticMarkup(createElement(LoginView));
+      assert.match(html, /aria-label="Exclusive Media"/);
+      assert.ok(html.includes(`src="${base}/images/camera.webp"`));
+      assert.match(html, /Fotografia/);
+      assert.doesNotMatch(html, /Artis|Artes|Angel|halo|Hermes|Bolsonaro|Pátria|Louro/);
+    }
+  } finally {
+    if (old === undefined) delete process.env.NEXT_PUBLIC_BASE_PATH;
+    else process.env.NEXT_PUBLIC_BASE_PATH = old;
+  }
 });

@@ -1,15 +1,16 @@
-# Artis Angel — Hermes Test APP
+# Exclusive Media — Hermes Test APP
 
-Página estática com Next.js e React em tons de rosa. Login e home compartilham
-a marca Artis Angel, com auréola dourada acima do A de Angel. O tema Brasil
-e a fotografia anterior foram retirados. Publicação atual no GitHub Pages;
+Site estático com Next.js e React voltado a profissionais de fotografia.
+Identidade editorial em tons escuros, imagens de referência, galeria de inspiração
+e seções sobre composição e expressão visual. As fotos não são apresentadas como
+um portfólio autoral; veja `docs/image-credits.md`. Publicação atual no GitHub Pages;
 a publicação na Vercel permanece adiada.
 
 Site: https://infowest-systems.github.io/hermes-test-app/
 
 ## Login demonstrativo
 
-A entrada do site mostra o formulário de login. Use **Hermes** e **1234**.
+A entrada do site mostra o formulário de login. Use **Renato** e **321**. As credenciais e sessões anteriores não são aceitas.
 Após entrar, a rota `/home/` exibe a página principal com o botão **Sair**.
 A sessão permanece durante a navegação e o recarregamento na mesma aba;
 ao sair, o acesso direto à home retorna ao login.
