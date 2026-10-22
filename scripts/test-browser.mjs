@@ -33,9 +33,11 @@ try {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(baseURL);
-  await page.getByRole('img', { name: 'Louro José, o papagaio, de smoking', exact: true }).waitFor();
-  await page.waitForFunction(() => { const image = document.querySelector('.login-mascot img'); return image && image.complete && image.naturalWidth > 0; });
-  console.log('PASS: Louro José photo loads on login');
+  await page.getByRole('heading', { name: 'Artis Angel', exact: true }).waitFor();
+  assert.equal(await page.locator('.angel-initial > .halo').count(), 1);
+  assert.equal(await page.evaluate(() => getComputedStyle(document.body).backgroundColor), 'rgb(246, 217, 226)');
+  assert.doesNotMatch(await page.locator('body').innerText(), /Bolsonaro|Pátria|Louro|BRASIL/);
+  console.log('PASS: pink Artis Angel login with halo over Angel A');
   await page.getByLabel('Usuário', { exact: true }).fill('Hermes');
   await page.getByLabel('Senha', { exact: true }).fill('wrong');
   await page.getByRole('button', { name: 'Entrar', exact: true }).click();
@@ -48,10 +50,14 @@ try {
   }
   await page.getByLabel('Senha', { exact: true }).fill('123');
   await page.getByRole('button', { name: 'Entrar', exact: true }).click();
+  await page.getByRole('alert').filter({ hasText: 'Usuário ou senha incorretos.' }).waitFor();
+  console.log('PASS: old password 123 is rejected');
+  await page.getByLabel('Senha', { exact: true }).fill('1234');
+  await page.getByRole('button', { name: 'Entrar', exact: true }).click();
   await page.waitForURL(baseURL + 'home/');
-  await page.getByRole('heading', { name: 'Deus, Pátria e Família', exact: true }).waitFor();
+  await page.getByRole('heading', { name: 'Artis Angel', exact: true }).waitFor();
   await page.getByRole('button', { name: 'Sair (logoff)', exact: true }).waitFor();
-  console.log('PASS: Hermes / 123 opens home with logoff');
+  console.log('PASS: Hermes / 1234 opens home with logoff');
   await page.reload();
   await page.getByText('Olá, Hermes', { exact: true }).waitFor();
   console.log('PASS: refresh preserves the tab session');
@@ -75,7 +81,7 @@ try {
   assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   if (process.env.SCREENSHOT_DIR) await mobile.screenshot({ path: path.join(process.env.SCREENSHOT_DIR, 'login-mobile.png'), fullPage: true });
   await mobile.getByLabel('Usuário', { exact: true }).fill('Hermes');
-  await mobile.getByLabel('Senha', { exact: true }).fill('123');
+  await mobile.getByLabel('Senha', { exact: true }).fill('1234');
   await mobile.getByRole('button', { name: 'Entrar', exact: true }).click();
   await mobile.waitForURL(baseURL + 'home/');
   await mobile.getByRole('button', { name: 'Sair (logoff)', exact: true }).waitFor();

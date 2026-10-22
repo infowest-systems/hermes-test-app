@@ -2,8 +2,8 @@ import { createElement as h } from 'react';
 import './globals.css';
 
 export const metadata = {
-  title: 'Brasil | Deus, Pátria e Família',
-  description: 'Página pessoal em verde e amarelo. Deus, Pátria e Família. Bolsonaro 2026.'
+  title: 'Artis Angel',
+  description: 'Artis Angel. Um cantinho de arte, delicadeza e inspiração.'
 };
 
 export default function RootLayout({ children }) {

@@ -1,15 +1,15 @@
-# Brasil — Hermes Test APP
+# Artis Angel — Hermes Test APP
 
-Página estática com Next.js e React, tema Brasil em verde e amarelo,
-com os textos “Deus, Pátria e Família” e “Bolsonaro 2026”. Página pessoal,
-sem vínculo oficial. Publicação atual no GitHub Pages;
+Página estática com Next.js e React em tons de rosa. Login e home compartilham
+a marca Artis Angel, com auréola dourada acima do A de Angel. O tema Brasil
+e a fotografia anterior foram retirados. Publicação atual no GitHub Pages;
 a publicação na Vercel permanece adiada.
 
 Site: https://infowest-systems.github.io/hermes-test-app/
 
 ## Login demonstrativo
 
-A entrada do site mostra o formulário de login. Use **Hermes** e **123**.
+A entrada do site mostra o formulário de login. Use **Hermes** e **1234**.
 Após entrar, a rota `/home/` exibe a página principal com o botão **Sair**.
 A sessão permanece durante a navegação e o recarregamento na mesma aba;
 ao sair, o acesso direto à home retorna ao login.

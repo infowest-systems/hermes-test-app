@@ -4,12 +4,11 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import Home from '../components/HomeView.js';
 
-test('static Brazil page shows the requested slogan and Bolsonaro 2026', () => {
+test('home shows Artis Angel, halo on the A in Angel, and logoff without old theme', () => {
   const html = renderToStaticMarkup(createElement(Home));
   assert.match(html, /<main[\s>]/);
-  assert.match(html, /<h1[^>]*aria-label="Deus, Pátria e Família"/);
-  assert.match(html, /Bolsonaro 2026/);
+  assert.match(html, /<h1[^>]*aria-label="Artis Angel"/);
+  assert.match(html, /class="angel-initial"><span class="halo" aria-hidden="true"><\/span>A<\/span>ngel/);
   assert.match(html, /<button[^>]*aria-label="Sair \(logoff\)"[^>]*>Sair<\/button>/);
-  assert.match(html, /class="brazil-flag" aria-hidden="true"/);
-  assert.doesNotMatch(html, /Artes Angel|class="halo"|Hello World|<input/);
+  assert.doesNotMatch(html, /Bolsonaro|Pátria|BRASIL|Louro|louro-jose|brazil-flag/);
 });
